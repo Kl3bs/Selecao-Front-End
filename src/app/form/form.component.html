@@ -1,24 +1,38 @@
 <div class="container">
-    <div class="content">
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-                <input type="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Price</label>
-                <input type="password" class="form-control">
-            </div>
+  <div class="content">
+    <p *ngIf="message_success">
+      <ngb-alert [dismissible]="false" type="success">
+        <strong>Tudo certo!</strong> O item foi adicionado.
+      </ngb-alert>
+    </p>
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">Sku</label>
-                <input type="password" class="form-control">
-            </div>
+    <p *ngIf="message_error">
+      <ngb-alert [dismissible]="false" type="danger">
+        Ocorreu um erro!
+      </ngb-alert>
+    </p>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name" required>
+      </div>
 
-            <br>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="text" class="form-control" formControlName="price" ng-pattern="onlyNumbers" mask="separator.2"
+          thousandSeparator="" separatorLimit="99999999999999" required>
+      </div>
 
-            <div class="form-group"> <button type="submit" class="btn btn-primary">Submit</button></div>
-        </form>
-    </div>
+      <div class="form-group">
+        <label>Sku</label>
+        <input type="text" class="form-control" formControlName="sku" required>
+      </div>
+
+      <br>
+
+      <div class="form-group"> <button [disabled]="!itemForm.valid" type="submit"
+          class="btn btn-primary">Submit</button></div>
+    </form>
+  </div>
 
 </div>
