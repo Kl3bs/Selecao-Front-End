@@ -24,7 +24,7 @@ export class FormComponent implements OnInit {
     this.itemForm = formBuilder.group({
       name: '',
       price: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      sku: '',
+      sku: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
 
@@ -37,8 +37,6 @@ export class FormComponent implements OnInit {
   };
 
   onSubmit() {
-    // console.warn('Your order has been submitted', this.itemForm.value);
-
     this.data.name = this.itemForm.controls['name'].value;
     this.data.price = this.itemForm.controls['price'].value;
     this.data.sku = this.itemForm.controls['sku'].value;

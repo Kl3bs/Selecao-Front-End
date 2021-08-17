@@ -25,7 +25,8 @@
 
       <div class="form-group">
         <label>Sku</label>
-        <input type="text" class="form-control" formControlName="sku" required>
+        <input type="text" class="form-control" formControlName="sku" ng-pattern="onlyNumbers" mask="999999999"
+          minlength="9" required>
       </div>
 
       <br>
