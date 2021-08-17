@@ -43,7 +43,7 @@ export class FormComponent implements OnInit {
 
     this.mainService.sendItem(this.data).subscribe(
       (success) => this.showSucess(),
-      (error) => console.log(error)
+      (error) => this.showError()
     );
   }
 
